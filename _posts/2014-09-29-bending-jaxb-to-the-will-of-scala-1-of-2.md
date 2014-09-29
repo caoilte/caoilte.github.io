@@ -20,7 +20,7 @@ This week I'll focus on optionals. Next week I will cover lists.
 
 The use-case that I am exploring the background to in this series of blog posts was modelling the [Atom Syndication Format][atom-syndication-spec] in appropriately typed Scala Case Classes that serialize to the corresponding XML as cleanly and concisely as possible. My (nearly complete) implementation is available [here][atomizer-github].
 
-I didn't consider using scala-xml, because it has had a lot of bad press over the years. Jackson and json4s both have XML bindings, but they are not flexible enough to accurately map the complete Atom Specification. The only other well supported Scala xml library that I am aware of is [scalaxb]. I have used that before and it is very good. However, 
+I wanted to avoid scala-xml because of the (perhaps un-justified) bad press it gets. Jackson and json4s both have XML bindings, but they are not flexible enough to accurately map the complete Atom Specification. The only other well supported Scala xml library that I am aware of is [scalaxb]. I have used that before and it is very good. However, 
 
 * It relies on XSDs and although there are Atom XSDs [out there][atom-xsd-links], none are official.
 * The Case Classes generated are not as friendly to use as hand rolled could be (as evidenced by [these examples of Entries generated from different XSDs][nasty-atom-scala-from-xsd] I found).
@@ -34,7 +34,7 @@ Basic types (strings, nested types, un-parameterised custom types) are very simp
 
 ## The Troubles with Optionals ##
 
-Martin Krasser's [blog post][krasserm-jaxb] gives a great example of [binding an optional string][krasserm-jaxb-string-option] to a case class but problems emerge when you actually use it.
+Martin also gives a great example of [binding an optional string][krasserm-jaxb-string-option] to a case class but problems emerge when you actually use it.
 
 ### None Behaviour on Strings ###
 
