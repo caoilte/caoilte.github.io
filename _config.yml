@@ -1,3 +1,29 @@
-name: Caoilte O'Connor
-markdown: redcarpet
-pygments: true
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Caoilte O'Connor
+tagline:          Learnings
+description:      When Google failed me
+url:              http://caoilte.org
+paginate:         10
+baseurl:          /
+author:
+  name:           Caoilte O'Connor
+  url:            https://twitter.com/caoilte_oconnor
+  email:          nospam@caoilte.org
+
+# Custom vars
+github:
+  repo:           https://github.com/caoilte/caoilte.github.io
+
+# Excerpts: http://stackoverflow.com/questions/16422933/how-do-i-use-markdownify-in-jekyll-to-show-an-excerpt-on-the-index
+excerpt_separator: <!--more-->  # you can specify your own separator, of course.
+
+# Taken from https://help.github.com/articles/using-jekyll-plugins-with-github-pages
+gems:
+- jekyll-sitemap

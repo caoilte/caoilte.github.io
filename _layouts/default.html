@@ -1,44 +1,17 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
+  {% include head.html %}
+  {% include google_analytics.html %}
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
+  <body class="theme-base-0d">
 
-    </head>
-    <body>
+    {% include sidebar.html %}
 
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
-          </div>
+    <div class="content container">
+      {{ content }}
+	  {% include comments.html %}
+    </div>
 
-          {{ content }}
-
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Caoilte O'Connor<br />
-                Software Developer<br />
-                nospam@caoilte.org
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/caoilte">github.com/yourusername</a><br />
-                <a href="https://twitter.com/caoilte_oconnor">twitter.com/caoilte_oconnor</a><br />
-              </p>
-            </div>
-          </div>
-        </div>
-
-    </body>
+  </body>
 </html>
