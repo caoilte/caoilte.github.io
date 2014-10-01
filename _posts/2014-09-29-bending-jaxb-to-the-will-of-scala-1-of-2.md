@@ -18,7 +18,7 @@ This week I'll focus on optionals. Next week I will cover lists.
 
 ## Background ##
 
-The use-case that I am exploring the background to in this series of blog posts was modelling the [Atom Syndication Format][atom-syndication-spec] in appropriately typed Scala Case Classes that serialize to the corresponding XML as cleanly and concisely as possible. My (nearly complete) implementation is available [here][atomizer-github].
+The use-case that I am exploring in this series of blog posts was modelling the [Atom Syndication Format][atom-syndication-spec] in appropriately typed Scala Case Classes that serialize to the corresponding XML as cleanly and concisely as possible. My (nearly complete) implementation is available [here][atomizer-github].
 
 I wanted to avoid scala-xml because of the (perhaps un-justified) bad press it gets. Jackson and json4s both have XML bindings, but they are not flexible enough to accurately map the complete Atom Specification. The only other well supported Scala xml library that I am aware of is [scalaxb]. I have used that before and it is very good. However, 
 
@@ -54,7 +54,7 @@ to serialize to
 </person>
 {% endhighlight %}
 
-ie to leave out the `Option[String]` username field because it was set to `None`. However, despite running JDK7u45 (Martin thought JDK7u4 and up should contain a fix for [this bug][jaxb-415]) I still got a nasty [NPE][optional-string-error-jdk7u45]. And then, even when I upgraded to the latest version of JAXB (2.2.7) the case class would marshal to XML but left in an empty element for username desptite the XMLAdapter specifically returning null.
+ie to leave out the `Option[String]` username field because it was set to `None`. However, despite running JDK7u45 (Martin thought JDK7u4 and up should contain a fix for [this bug][jaxb-415]) I still got a nasty [NPE][optional-string-error-jdk7u45]. And then, even when I upgraded to the latest Reference Implementation version of JAXB (2.2.7) the case class would marshal to XML but left in an empty element for username despite the `XMLAdapter` specifically returning null.
 
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -88,7 +88,7 @@ to
 </person>
 {% endhighlight %}
 
-However, for me it [NPEs][optional-case-class-error] when using jdk7u45 (with or without adding JAXB 2.2.7 as an explicit dependency). The problem is very specific and I was only able to reproduce it for types with one attribute that was `@xmlValue` annotated. 
+However, for me it [NPEs][optional-case-class-error] when using jdk7u45 (with or without adding the RI JAXB 2.2.7 as an explicit dependency). The problem is very specific and I was only able to reproduce it for types with one attribute that was `@xmlValue` annotated. (I have raised the bug as [JAXB-1052].)
 
 ### EclipseLink MOXy : A Solution for Optionals ###
 
@@ -143,5 +143,6 @@ I decided to write about JAXB in Scala because I wanted to highlight the problem
 [krasserm-jaxb-string-option]:   https://gist.github.com/krasserm/1891525#file-jaxb-02-scala
 [optional-string-error-jdk7u45]: https://gist.github.com/caoilte/aa7839935a29713a7a51#file-jaxb-in-scala-1_02-txt
 [optional-case-class-error]:     https://gist.github.com/caoilte/aa7839935a29713a7a51#file-jaxb-in-scala-1_04-txt
+[jaxb-1052]:                              https://java.net/jira/browse/JAXB-1052
 [eclipse-link]:                  http://www.eclipse.org/eclipselink/moxy.php
 [so-jaxb-empty-string-to-null]:  http://stackoverflow.com/questions/11894193/jaxb-marshal-empty-string-to-null-globally/11931768#11931768
