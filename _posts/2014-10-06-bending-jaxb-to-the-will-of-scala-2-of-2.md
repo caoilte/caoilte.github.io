@@ -7,6 +7,7 @@ tags:
 - scala
 - jaxb
 - xml
+comments: true
 ---
 
 This blog post is the second in a two part series that bottoms out solutions for the corner cases that I ran into whilst getting JAXB to work in Scala. I am indebted to Martin Krasser's [blog post on JAXB][krasserm-jaxb] for providing an essential first primer on the topic. 
