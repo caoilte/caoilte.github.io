@@ -25,5 +25,7 @@ github:
 excerpt_separator: <!--more-->  # you can specify your own separator, of course.
 
 # Taken from https://help.github.com/articles/using-jekyll-plugins-with-github-pages
-gems:
+plugins:
 - jekyll-sitemap
+- jekyll-paginate
+- jekyll-gist
